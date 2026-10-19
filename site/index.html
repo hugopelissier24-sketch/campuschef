@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusChef - Recettes Étudiantes</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/script.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>🎓 CampusChef</h1>
+    <p>Mangez bien, rapidement et pas cher !</p>
+  </header>
+
+  <main class="container">
+    <!-- Barre de recherche -->
+    <section class="search-section" aria-label="Recherche de recettes">
+      <input type="search" id="search-input" placeholder="Ingrédient ou recette (ex: poulet, pasta)..." />
+      <button id="search-btn" class="btn btn-primary">Rechercher Web</button>
+      <button id="reset-btn" class="btn btn-secondary" style="display: none;">← Recettes locales</button>
+    </section>
+
+    <!-- Filtres -->
+    <nav class="filters" aria-label="Filtres de recettes">
+      <button class="filter-btn active" data-filter="all">Toutes</button>
+      <button class="filter-btn" data-filter="quick">⚡️ &lt; 10 min</button>
+      <button class="filter-btn" data-filter="cheap">💶 Petit budget</button>
+      <button class="filter-btn" data-filter="healthy">🥗 Équilibré</button>
+      <button class="filter-btn" data-filter="favorites">★ Mes Favoris</button>
+    </nav>
+
+    <!-- Grille des cartes -->
+    <section id="recipe-grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Modale -->
+  <div id="recipe-modal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+      <button id="close-modal" class="close-btn" aria-label="Fermer la fenêtre">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+</body>
+</html>
