@@ -1,5 +1,10 @@
 # CampusChef
 
+[![Déploiement GitHub Actions](https://github.com/hugopelissier24-sketch/campuschef/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/hugopelissier24-sketch/campuschef/actions/workflows/deploy.yml)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+
 CampusChef est une application web de recettes pensée pour les étudiants : retrouver des idées de repas rapides, économiques et faciles à préparer, puis gérer ses recettes favorites.
 
 ## Présentation
@@ -58,7 +63,7 @@ Pour activer le déploiement dans le dépôt GitHub :
 2. Dans **Build and deployment**, choisir **GitHub Actions** comme source.
 3. Envoyer un commit sur `main` ou lancer manuellement le workflow **Deploy to GitHub Pages** dans l’onglet **Actions**.
 
-Après la réussite du workflow, le site sera accessible à l’adresse [https://hugopelissier24-sketch.github.io/campuschef/](https://hugopelissier24-sketch.github.io/campuschef/). La première publication peut prendre quelques minutes.
+Après la réussite du workflow, le site sera accessible à l’adresse [CampusChef sur GitHub Pages](https://hugopelissier24-sketch.github.io/campuschef/). La première publication peut prendre quelques minutes.
 
 ## Limites actuelles
 
