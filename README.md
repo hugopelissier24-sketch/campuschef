@@ -1,62 +1,78 @@
 # CampusChef
 
-CampusChef est une application web de recettes pensée pour les étudiants : trouver des idées de repas rapides et abordables, consulter les ingrédients et les instructions, et enregistrer ses recettes préférées.
+CampusChef est une application web de recettes pensée pour les étudiants : retrouver des idées de repas rapides, économiques et faciles à préparer, puis gérer ses recettes favorites.
 
-## État actuel
+## Présentation
 
-Le projet est un prototype front-end en HTML, CSS et JavaScript. Il n’y a ni serveur applicatif ni base de données. La page et les styles sont en place, et le code JavaScript contient les fonctionnalités décrites ci-dessous.
+Le projet est une interface front-end en HTML, CSS et JavaScript, sans backend ni base de données. Il permet :
 
-La page charge le code JavaScript depuis `js/script.js`. Les fonctionnalités décrites sont donc reliées à la page.
+- de consulter une sélection de recettes locales,
+- de filtrer les résultats selon plusieurs critères,
+- de rechercher des recettes sur le web via TheMealDB,
+- d’ajouter des recettes en favoris dans le navigateur,
+- d’ouvrir une modale avec les ingrédients et les instructions détaillées.
 
-### Fonctionnalités implémentées dans le code JavaScript
+## Fonctionnalités
 
-- Quatre recettes locales avec ingrédients, instructions, temps, coût indicatif et difficulté.
-- Affichage des recettes sous forme de cartes avec image, étiquettes et bouton favori.
-- Ajout et retrait des favoris ; la liste des favoris est conservée dans le stockage local du navigateur (`localStorage`).
-- Filtres locaux : toutes les recettes, recettes de 10 minutes ou moins, recettes à 1,50 € ou moins, recettes équilibrées et favoris.
-- Recherche en ligne avec TheMealDB : recherche par nom, puis tentative de recherche par ingrédient.
-- Fenêtre modale avec ingrédients et préparation ; les instructions des recettes en ligne sont traduites en français via MyMemory, jusqu’à 450 caractères.
-- Affichage d’états de chargement, d’erreur et de liste vide.
+- 4 recettes locales avec image, temps de préparation, coût estimé, difficulté et ingrédients.
+- Filtres : toutes, moins de 10 min, petit budget, équilibré, favoris.
+- Recherche en ligne par nom ou ingrédient.
+- Retour à la liste locale après une recherche web.
+- Sauvegarde des favoris dans `localStorage`.
+- Modale détaillée avec instructions et liste des ingrédients ; les instructions en ligne sont traduites en français via MyMemory.
+- États de chargement, erreur et liste vide.
 
-### Limites connues
-
-- La recherche et la traduction requièrent une connexion Internet et dépendent de services tiers.
-- La recherche en ligne ne convertit pas automatiquement les termes français en anglais. La recherche par ingrédient peut renvoyer des informations partielles, selon la réponse de TheMealDB.
-- Pendant une recherche en ligne, les filtres de recettes locales ne filtrent pas les résultats.
-- La traduction est limitée aux 450 premiers caractères ; en cas d’échec, le texte original est utilisé.
-- Les favoris sont enregistrés uniquement dans le navigateur et ne sont pas synchronisés entre appareils.
-- Aucun test automatisé ni outil de build n’est configuré.
-
-## Structure
+## Structure du projet
 
 ```text
 .
-├── .vscode/
-│   └── launch.json
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 ├── css/
 │   └── style.css
 ├── js/
 │   └── script.js
-├── site/
-│   └── index.html
+├── index.html
 └── README.md
 ```
 
-- `site/index.html` définit la page, les boutons de recherche et de filtres, la grille de recettes et la fenêtre modale.
-- `css/style.css` définit l’apparence de la page, des cartes, des favoris et de la fenêtre modale, avec une adaptation aux petits écrans.
-- `js/script.js` contient les recettes locales, la recherche, le rendu des cartes, les filtres, les favoris et la traduction.
-- `.vscode/launch.json` configure le débogage pour ouvrir directement `site/index.html` dans Chrome, sans serveur local.
+- `index.html` : structure principale de la page, recherche, filtres et modale.
+- `css/style.css` : styles du site, cartes de recettes et responsive design.
+- `js/script.js` : recettes locales, logique de filtres, gestion des favoris, recherche web et traduction.
+- `.github/workflows/deploy.yml` : déploiement automatique du site sur GitHub Pages.
 
 ## Lancer le projet
 
-Aucune dépendance ni aucun serveur local ne sont requis pour lancer la page.
+Aucune installation ni dépendance n’est nécessaire.
 
-1. Ouvrir le dossier du projet dans VS Code.
-2. Dans **Exécuter et déboguer**, choisir **Ouvrir CampusChef**, puis démarrer le débogage pour ouvrir directement `site/index.html` dans Chrome.
-3. La recherche et la traduction nécessitent une connexion Internet ; leur fonctionnement peut dépendre des restrictions du navigateur lorsqu’une page est ouverte comme fichier local.
+Ouvrir `index.html` dans un navigateur. La recherche web et la traduction nécessitent une connexion Internet.
 
-## Prochaines étapes
+## Hébergement sur GitHub Pages
 
-1. Tester les filtres, la recherche, le retour aux recettes locales, les favoris et leur persistance après rechargement.
-2. Améliorer la recherche en français et gérer plus précisément les résultats de recherche par ingrédient.
-3. Ajouter des recettes et des tests ; poursuivre les vérifications d’accessibilité et d’affichage mobile.
+Le site est configuré pour être publié automatiquement sur GitHub Pages à chaque push sur la branche `main`. Le workflow se trouve dans `.github/workflows/deploy.yml`.
+
+Pour activer le déploiement dans le dépôt GitHub :
+
+1. Ouvrir **Settings > Pages**.
+2. Dans **Build and deployment**, choisir **GitHub Actions** comme source.
+3. Envoyer un commit sur `main` ou lancer manuellement le workflow **Deploy to GitHub Pages** dans l’onglet **Actions**.
+
+Après la réussite du workflow, le site sera accessible à l’adresse [https://hugopelissier24-sketch.github.io/campuschef/](https://hugopelissier24-sketch.github.io/campuschef/). La première publication peut prendre quelques minutes.
+
+## Limites actuelles
+
+- La recherche web dépend de services tiers (TheMealDB et MyMemory).
+- Les requêtes internet nécessitent une connexion active.
+- La recherche en français est limitée et la recherche par ingrédient peut renvoyer des résultats incomplets.
+- En recherche en ligne, les filtres des recettes locales ne s’appliquent pas. La traduction est limitée aux 450 premiers caractères ; en cas d’échec, le texte original est affiché.
+- Les favoris ne sont sauvegardés que dans le navigateur utilisé et ne sont pas synchronisés entre appareils.
+- Le projet est un prototype front-end sans backend ni tests automatisés. Le workflow GitHub Actions sert uniquement à publier les fichiers statiques ; aucune étape de build n’est nécessaire.
+
+## Prochaines améliorations
+
+- améliorer la recherche en français,
+- mieux gérer les résultats de recherche par ingrédient,
+- ajouter plus de recettes,
+- améliorer l’accessibilité et le responsive,
+- mettre en place des tests automatisés et une meilleure architecture du code.
